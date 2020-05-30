@@ -1,4 +1,5 @@
 var http = require("http");
+const querystring = require('querystring');
 
 exports.post = (req, res, next) => {
     res.status(201).send('Requisição recebida com sucesso!');
@@ -12,36 +13,36 @@ exports.delete = (req, res, next) => {
     res.status(200).send(`Requisição recebida com sucesso! ${id}`);
 };
 
-exports.get = (req, res, next) => {
-      
+exports.meteomatics = (req, res, next) => {
+    
     var username = "students_santos";
     var password = "uCQ81FyWabqI4";  
+
     var options = {
-        hostname: `${username}:${password}@api.meteomatics.com`,
+        hostname: `api.meteomatics.com`,
         port: 80,
         path: '/2020-05-30T13:15:00ZP1D:PT1H/t_2m:C/50,10/json?model=mix',
-        method: 'GET', // <--- aqui podes escolher o método
+        method: 'GET', 
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-            //'Content-Length': Buffer.byteLength(postData)
-        }
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic c3R1ZGVudHNfc2FudG9zOnVDUTgxRnlXYWJxSTQ='
+        },
+        
     };
     
-    var req2 = http.request(options, (res) => {
-        res.setEncoding('utf8');
+    var request = http.request(options, (response) => {
+        response.setEncoding('utf8');
         let data = '';
-        res.on('data', d => data += d);
-        res.on('end', () => {
-            console.log('Terminado! Data:', data);
+        response.on('data', d => data += d);
+        response.on('end', () => {
+            let json = JSON.parse(data);
+            res.status(200).send(json.data);
         });
     });
     
-    req2.on('error', (e) => {
+    request.on('error', (e) => {
         console.log(`Houve um erro: ${e.message}`);
     });
-    
-    // aqui podes enviar data no POST
-    //req2.write();
-    req2.end();
-    //console.log(req2);
+
+    request.end();
 };

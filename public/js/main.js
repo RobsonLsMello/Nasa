@@ -1,10 +1,11 @@
 var myGeoJSONPath = 'json/custom.geo.json';
 var myCustomStyle = {
     stroke: true,
+    weight: 1,
     fill: true,
     color: "#fff",
     fillColor: '#fff',
-    fillOpacity: 0.3
+    fillOpacity: 0
 }
 var map;
 
@@ -18,15 +19,20 @@ var criarMapa = (isSatelite) =>{
         }
         console.log(data);
         
-        map = L.map('map').setView([39.74739, -105], 2);
+        map = L.map('map',{
+            zoomControl: false
+            //... other options
+        }).setView([0, 0], 2);
         let acessToken = "pk.eyJ1Ijoicm9ic29ubHNtZWxsbyIsImEiOiJjamRheGs5dTkzbjYxMnFxcnY4Y2V2cjdpIn0.DpOln_BahHo_3c4lFKSQYQ";
         L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${acessToken}`, {
             maxZoom: 18,
-            id: isSatelite ? 'robsonlsmello/ckatwkkrl0ht61ilg1v47nnt0':'robsonlsmello/ckatusa93237m1iqbdp7xyfmp',
+            minZoom:2,
+            id: `robsonlsmello/${isSatelite ? 'ckatwkkrl0ht61ilg1v47nnt0':'ckau3mzng01fw1iof5aesrk3x'}`,
             tileSize: 512,
+
             zoomOffset: -1
         }).addTo(map);
-    
+        map.setMaxBounds(  [[-90,-180],   [90,180]]  );
         geojson = L.geoJson(data).addTo(map);
     
         
@@ -36,9 +42,10 @@ var criarMapa = (isSatelite) =>{
     
             layer.setStyle({
                 weight: 1,
-                color: '#666',
+                color: '#fff',
                 dashArray: '',
-                fillColor: '#ff0',
+                fillColor: '#6436d6',
+                
                 fillOpacity: 0.7
             });
     
@@ -68,6 +75,29 @@ var criarMapa = (isSatelite) =>{
             onEachFeature: onEachFeature
         }).addTo(map);
     });
+}
+
+var zoomValue = 2;
+/**
+ * 
+ * @param {*} isZoomIn 
+ * @param {HTMLButtonElement} button 
+ */
+var darZoom = (isZoomIn, button) =>{
+    if(isZoomIn+1 <= 18 || isZoomIn-1 >= 2){
+        if(isZoomIn)
+            zoomValue++;
+        else
+            zoomValue--;
+        let botoes = document.getElementsByName(button.className);
+        for(key in botoes){
+            let botao = botoes[key];
+            botao.disabled = false;
+        }
+    }
+    else{
+        button.disabled = true;
+    }    
 }
 
 criarMapa(false);
