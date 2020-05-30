@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 //Rotas
 const index = require('./routes/index');
+const api = require('./routes/apiRoute');
 //const personRoute = require('./routes/personRoute');
 app.use('/', index);
+app.use('/api', api);
 //app.use('/persons', personRoute);
 //apis
 app.set('view engine', 'ejs');
