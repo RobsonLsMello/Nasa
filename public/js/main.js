@@ -307,11 +307,16 @@ florestalBtn.addEventListener('click', () => {
 
 let botoesLaterais = document.getElementsByClassName("stylesButtons");
 
+fecharBtn.addEventListener('click', () => {
+    document.querySelector(".analiseContainer").classList.remove("analiseContainer-set");
+})
+
 for(key in botoesLaterais){
     let botao = botoesLaterais[key];
     botao.addEventListener("click", () =>{
         document.querySelector(".analiseContainer").classList.add("analiseContainer-set");
-    } );
+    });
+    
 }
 
-fecharBtn.classList.remove("analiseContainer-set");
+
