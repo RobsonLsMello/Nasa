@@ -22,13 +22,13 @@ var response = (urlStr, call, data = {}) =>{
 }   
 
 var fireReports = (date) =>{
-    response(`http://localhost:2000/api/fireReportsData?date=${date}`,(data) =>{
+    response(`api/fireReportsData?date=${date}`,(data) =>{
         criarMapa(isSatelite, data, 'fire');
     });
 }
 
 var covid19 = (othertype) =>{
-    response(`http://localhost:2000/api/covidData`,(data) =>{
+    response(`api/covidData`,(data) =>{
         criarMapa(isSatelite, JSON.parse(data), 'covid', othertype);
     });
 }
