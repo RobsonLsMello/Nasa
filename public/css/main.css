@@ -45,17 +45,18 @@ header{
 
 .menuButtons > nav{
     width: 130px;
+    z-index: 10;
 }
 .menuButtons{
     height: 100%;
     display: block;
-    width: 430px;
+    min-width: 130px;
     position: absolute;
     top:0;
     margin-left:20px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-items: center
    
 } 
@@ -85,12 +86,19 @@ header{
 
 .analiseContainer{
     height: 480px;
-    width: 100px;
+    width: 300px;
     background-color: #f4f4f4;
     margin-left: 20px;
     left: 13%;
     display: block;
+    transform: translate3d(-500px, 0, 0);
+    transition: 100ms;
 }
+
+.analiseContainer-set{
+    transform: translate3d(0px, 0, 0)
+}
+
 
 .headerAnalise{
     height: 10%;
@@ -100,6 +108,7 @@ header{
 }
 
 .contentContainer{
+    padding: 20px;
     height: 90%;
     width: 100%;
     overflow-y: scroll;
@@ -135,7 +144,9 @@ header{
     border-style: none;
     background-color:  #f4f4f4;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 25px;
+    padding-left: 10px;
+    box-shadow: 0px 3px 6px #666666;
 }
 
 .answerFooter ::-webkit-input-placeholder{
@@ -143,7 +154,7 @@ header{
     font-size: 25px;
     display: flex;
     vertical-align: middle;
-    color: #000000;
+    color: #4d4949;
 }
 
 .answerFooter input{
