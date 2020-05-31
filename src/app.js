@@ -8,9 +8,9 @@ const router = express.Router();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 //Rotas
-const index = require('./routes/index');
-const api = require('./routes/ApiRoute');
-const conversation = require('./routes/ConversationRoute');
+const index = require('routes/index');
+const api = require('routes/ApIRoute');
+const conversation = require('routes/ConversationRoute');
 //const personRoute = require('./routes/personRoute');
 app.use('/', index);
 app.use('/api', api);
