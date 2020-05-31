@@ -204,6 +204,7 @@ var criarMapa = (isSatelite, dataSet = [], typeData = "", otherType = "") =>{
             onEachFeature: onEachFeature
         }).addTo(map);
         console.log(geojson);
+        document.querySelector(".loading-screen").classList.remove("visibilidade");
     });
 }
 criarMapa(false);
@@ -238,6 +239,10 @@ var btnResize = document.getElementById('resizeBtn');
 var btnPrinter = document.getElementById('printerBtn');
 var btnShare = document.getElementById('shareBtn');
 var btnQuestion = document.getElementById('questionBtn');
+var coronadeathsBtn = document.getElementById('coronadeathsBtn');
+var coronaCaseslBtn = document.getElementById('coronaCaseslBtn');
+var florestalBtn = document.getElementById('florestalBtn');
+var fecharBtn = document.getElementById('fecharBtn');
 
 btnGeo[0].addEventListener('click', () =>{
     criarMapa(true);
@@ -286,6 +291,20 @@ btnPrinter.addEventListener('click', () => {
     window.print();
 })
 
+coronadeathsBtn.addEventListener('click', () => {
+    document.querySelector(".loading-screen").classList.add("visibilidade");
+    covid19('death');
+    
+})
+
+coronaCaseslBtn.addEventListener('click', () => {
+    covid19('cases');
+})
+
+florestalBtn.addEventListener('click', () => {
+    covid19('cases');
+})
+
 let botoesLaterais = document.getElementsByClassName("stylesButtons");
 
 for(key in botoesLaterais){
@@ -294,3 +313,5 @@ for(key in botoesLaterais){
         document.querySelector(".analiseContainer").classList.add("analiseContainer-set");
     } );
 }
+
+fecharBtn.classList.remove("analiseContainer-set");
