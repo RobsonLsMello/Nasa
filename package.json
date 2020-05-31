@@ -15,7 +15,7 @@
     "express-ejs-layouts": "^2.5.0",
     "ibm-watson": "^5.5.0",
     "jquery": "^3.5.1",
-    "nodemon": "^1.19.1",
+    "nodemon": "^2.0.4",
     "popper.js": "^1.15.0"
   },
   "devDependencies": {},
