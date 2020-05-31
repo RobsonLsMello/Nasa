@@ -1,4 +1,4 @@
-const app = require('./src/app');
+const app = require('../src/app');
 const configs = {
     caminho: "build", //Aqui será definido a pasta de saída onde contém o index.html e os outros arquivos.
     forcarHTTPS: true, //Defina para true se desejar que o redirecionamento para HTTPS seja forçado (é necessário certificado SSL ativo)

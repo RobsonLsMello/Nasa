@@ -4,7 +4,7 @@
   "description": "Space Apps",
   "main": "index.js",
   "bin": {
-    "multagend": "server.js"
+    "multagend": "bin/server.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -23,19 +23,11 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node bin/server"
   },
   "keywords": [
     "objetivo"
   ],
   "author": "Robson Mello",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RobsonLsMello/MultAgend.git"
-  },
-  "bugs": {
-    "url": "https://github.com/RobsonLsMello/MultAgend/issues"
-  },
-  "homepage": "https://github.com/RobsonLsMello/MultAgend#readme"
+  "license": "ISC"
 }
