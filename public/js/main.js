@@ -90,6 +90,23 @@ var criarMapa = (isSatelite, dataSet = [], typeData = "", otherType = "") =>{
                 })
             break;
             case 'covid':
+                var info = L.control();
+
+                info.onAdd = function (map) {
+                    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+                    this.update();
+                    return this._div;
+                };
+
+                // method that we will use to update the control based on feature properties passed
+                info.update = function (props) {
+                    this._div.innerHTML = '<h4>'+(otherType == 'cases' ? 'Cumulative Corona Cases':'Cumulative Corona Deaths')+'</h4>' +  (props ?
+                        '<b>' + props.name + '</b><br />' + props.density + ''
+                        : '');
+                };
+
+                info.addTo(map);
+
                 var getColor = (d) => {
                     switch(otherType){
                         case 'cases':
@@ -200,12 +217,12 @@ criarMapa(false);
 var darZoom = (isZoomIn) =>{
     map.setZoom( map.getZoom() + (isZoomIn ? 1 : -1));  
     if(map.getZoom() == 18){
-        btnZoomOut.disabled = true;
-        btnZoomIn.disabled = false;
-    }
-    if(map.getZoom() == 2){
         btnZoomOut.disabled = false;
         btnZoomIn.disabled = true;
+    }
+    if(map.getZoom() == 2){
+        btnZoomOut.disabled = true;
+        btnZoomIn.disabled = false;
     }
     else{
         btnZoomOut.disabled = false;
@@ -233,11 +250,11 @@ btnGeo[1].addEventListener('click', () =>{
 })
 
 btnZoomOut.addEventListener('click', () =>{
-    darZoom(true);
+    darZoom(false);
 });
 
 btnZoomIn.addEventListener('click', () =>{
-    darZoom(false);
+    darZoom(true);
 });
 
 btnResize.addEventListener('click', () => {
@@ -268,3 +285,12 @@ btnShare.addEventListener('click', () => {
 btnPrinter.addEventListener('click', () => {
     window.print();
 })
+
+let botoesLaterais = document.getElementsByClassName("stylesButtons");
+
+for(key in botoesLaterais){
+    let botao = botoesLaterais[key];
+    botao.addEventListener("click", () =>{
+        document.querySelector(".analiseContainer").classList.add("analiseContainer-set");
+    } );
+}
