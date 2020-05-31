@@ -10,9 +10,11 @@ app.use(express.json());
 //Rotas
 const index = require('./routes/index');
 const api = require('./routes/apiRoute');
+const conversation = require('./routes/ConversationRoute');
 //const personRoute = require('./routes/personRoute');
 app.use('/', index);
 app.use('/api', api);
+app.use('/conversation', conversation);
 //app.use('/persons', personRoute);
 //apis
 app.set('view engine', 'ejs');
