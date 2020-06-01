@@ -43,7 +43,19 @@
         <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
         <script src="js/main.js"></script>
         <script src="js/requests.js"></script>
-
+        <script>
+            window.watsonAssistantChatOptions = {
+                integrationID: "ad49d40b-e156-4fc7-b2e9-5fa4203d7bc1", // The ID of this integration.
+                region: "us-south", // The region your integration is hosted in.
+                serviceInstanceID: "cea6f09b-10f3-44d4-a1b8-4c9d7727208d", // The ID of your service instance.
+                onLoad: function(instance) { instance.render(); }
+              };
+            setTimeout(function(){
+              const t=document.createElement('script');
+              t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+              document.head.appendChild(t);
+            });
+          </script>
 
     </body>
 </html>

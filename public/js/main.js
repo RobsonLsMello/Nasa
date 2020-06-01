@@ -302,7 +302,7 @@ coronaCaseslBtn.addEventListener('click', () => {
 })
 
 florestalBtn.addEventListener('click', () => {
-    covid19('cases');
+    fireReports('2020-05-31');
 })
 
 let botoesLaterais = document.getElementsByClassName("stylesButtons");
