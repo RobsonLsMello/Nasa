@@ -1,11 +1,12 @@
-var AssistantV1 = require('ibm-watson/assistant/v1');
+/*var DiscoveryV1 = require('ibm-watson/discovery/v1');
 
-const assistant = new AssistantV1({
+const assistant = new DiscoveryV1({
+    version: '2019-02-01',
     username: 'vitor_palmarin@hotmail.com',
     password: 'Zordon*123',
     url: 'https://gateway.watsonplatform.net/assistant/api/',
-    apikey:'dT6xqHdD1kW66ymYvumdU3-M9vF-MMJuZ7FjsNIFfQkh',
-    version: '2018-02-16',
+    iam_apikey:'dT6xqHdD1kW66ymYvumdU3-M9vF-MMJuZ7FjsNIFfQkh',  
+    apikey:'dT6xqHdD1kW66ymYvumdU3-M9vF-MMJuZ7FjsNIFfQkh'    
   });
 
 exports.post = (req, res, next) => {
@@ -25,4 +26,4 @@ exports.post = (req, res, next) => {
     });
 };
 
-exports.post = (req, res, next) => {}
+exports.post = (req, res, next) => {}*/
